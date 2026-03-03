@@ -1,5 +1,8 @@
 Rails.application.routes.draw do  
   root 'pages#index'
+  
+  # Health check endpoint
+  get 'up', to: 'rails/health#show'
 
   resources :investors, only: [:index, :new, :create, :show, :edit, :update] do
     get 'success', on: :collection
