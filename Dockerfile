@@ -25,14 +25,16 @@ RUN gem install bundler -v 2.3.26
 COPY Gemfile* ./
 
 # Install gems
-RUN bundle _2.3.26_ install --jobs 4 --retry 3
+RUN bundle _2.3.26_ install --jobs 4 --retry 3 --force
 
 # Copy frontend package files only
 COPY frontend/package*.json frontend/yarn.lock* /app/frontend/
 
-# Install frontend dependencies
+# Install frontend dependencies with network configuration
 RUN if [ -d "/app/frontend" ]; then \
       cd /app/frontend && \
+      yarn config set network-timeout 300000 && \
+      yarn config set network-retry-count 5 && \
       yarn install --frozen-lockfile --network-timeout 600000; \
     fi
 

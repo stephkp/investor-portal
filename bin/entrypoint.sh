@@ -4,6 +4,10 @@ set -e
 # Remove a potentially pre-existing server.pid for Rails.
 rm -f /app/tmp/pids/server.pid
 
+# Ensure gems are installed
+echo "== Installing gems..."
+bundle _2.3.26_ install --jobs 4 --retry 3
+
 # Wait for PostgreSQL to be ready
 echo "== Waiting for PostgreSQL to start..."
 until PGPASSWORD=$DATABASE_PASSWORD pg_isready -h "$DATABASE_HOST" -U "$DATABASE_USERNAME" -d "$DATABASE_NAME" -t 1; do
