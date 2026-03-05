@@ -1,4 +1,6 @@
 import React from 'react';
+import InvestorForm from './components/InvestorForm/InvestorForm';
+import InvestorList from './components/InvestorList/InvestorList';
 
 function Home() {
   return (
@@ -59,6 +61,22 @@ function Home() {
 }
 
 function App() {
+  const path = window.location.pathname;
+
+  if (path === '/investors/new') {
+    return <InvestorForm mode="new" />;
+  }
+
+  if (path === '/investors') {
+    return <InvestorList />;
+  }
+
+  // Handle edit routes like /investors/123/edit
+  const editMatch = path.match(/^\/investors\/([^/]+)\/edit$/);
+  if (editMatch) {
+    return <InvestorForm mode="edit" investorId={editMatch[1]} />;
+  }
+
   return <Home />;
 }
 
