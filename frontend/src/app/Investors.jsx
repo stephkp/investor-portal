@@ -50,32 +50,25 @@ export default function Investors() {
   }, []);
 
   return (
-    <section className="section-container">
-      <div className="section-header new-investor__header">
-        <div className="section-header__title new-investor__title">
-          <h1>Investors</h1>
-        </div>
-      </div>
-
-      <div className="mt-4">
-        <a href="/investors/new" className="btn btn-primary">Add Investor</a>
+    <section className="page page--wide">
+      <div className="page__header">
+        <h1 className="page__title">Investors</h1>
+        <a href="/investors/new" className="btn btn--primary">Add Investor</a>
       </div>
 
       {loading && (
-        <div className="mt-4">
-          <p>Loading investors…</p>
-        </div>
+        <div className="page__status">Loading investors…</div>
       )}
 
       {error && (
-        <div className="mt-4 alert alert-danger">
+        <div className="alert alert--error">
           {error.message}
         </div>
       )}
 
       {!loading && !error && (
-        <div className="mt-4 table-responsive">
-          <table className="table table-hover">
+        <div className="card card--table">
+          <table className="table">
             <thead>
               <tr>
                 <th>Name</th>
@@ -88,19 +81,19 @@ export default function Investors() {
             <tbody>
               {investors.length === 0 ? (
                 <tr>
-                  <td colSpan={5}>No investors found.</td>
+                  <td colSpan={5} className="table__empty">No investors found.</td>
                 </tr>
               ) : (
                 investors.map((inv) => (
                   <tr key={inv.id}>
-                    <td>{inv.firstName} {inv.lastName}</td>
+                    <td className="table__primary">{inv.firstName} {inv.lastName}</td>
                     <td>{inv.phoneNumber}</td>
                     <td>{inv.streetAddress}, {inv.city}, {inv.state} {inv.zipCode}</td>
                     <td>{inv.ssn}</td>
                     <td>
-                      <div className="btn-group" role="group">
-                        <a href={`/investors/${inv.id}`} className="btn btn-sm btn-outline-primary">View</a>
-                        <a href={`/investors/${inv.id}/edit`} className="btn btn-sm btn-outline-secondary">Edit</a>
+                      <div className="btn-row">
+                        <a href={`/investors/${inv.id}`} className="btn btn--secondary btn--sm">View</a>
+                        <a href={`/investors/${inv.id}/edit`} className="btn btn--secondary btn--sm">Edit</a>
                       </div>
                     </td>
                   </tr>

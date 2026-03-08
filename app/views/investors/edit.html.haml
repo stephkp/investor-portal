@@ -1,8 +1,7 @@
-%section
-  .section-header.new-investor__header
-    .section-header__title.new-investor__title
-      %h1 Edit Investor
-      %p="Update investor details below"
-  
-  .container.mt-4
+%section.page.page--narrow
+  .page__header
+    %h2.page__title Edit Investor
+    = link_to 'Back to Investors', investors_path, class: 'btn btn--secondary btn--sm'
+
+  .card
     = render 'form', investor: @investor

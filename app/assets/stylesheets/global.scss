@@ -29,7 +29,7 @@
     margin-left: 0.5rem;
   }
 
-  .logo-icon {
+  &__logo-icon {
     font-size: 1.5rem;
   }
 
@@ -53,7 +53,7 @@
       color: #0056b3;
     }
 
-    &.active {
+    &--active {
       background-color: #007bff;
       color: white;
     }
@@ -80,7 +80,7 @@
   margin: 30px;
 }
 
-.secton-form {
+.section-form {
   background: #ffffff;
   padding: 1.25rem;
 }

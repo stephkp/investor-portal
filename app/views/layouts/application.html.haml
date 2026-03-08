@@ -17,7 +17,7 @@
       %nav.nav
         .nav__container
           = link_to root_path, class: 'nav__logo' do
-            %span.nav__logo-text Investor Management
+            %span.nav__logo-text Investor Portal
 
           .nav__bar
             %ul.nav__list
@@ -26,8 +26,8 @@
 
     %main.container
       - flash.each do |type, message|
-        .alert{class: "alert-#{type}"}
+        .alert{class: "alert--#{type}"}
           = message
-          %button.close{type: 'button', data: { dismiss: 'alert' }} &times;
+          %button.alert__close{type: 'button', data: { dismiss: 'alert' }} &times;
 
       = yield
