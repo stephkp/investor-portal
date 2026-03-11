@@ -1,5 +1,5 @@
 module Types
-  class QueryType < Types::BaseObject
+  class QueryType < BaseType
     field :investors, [Types::InvestorType], null: false, description: "Returns a list of all investors"
     def investors
       Investor.all
